@@ -1,3 +1,5 @@
+// Master JS file
+
 var queue = new createjs.LoadQueue(true);
 var progress_value = document.getElementById('progress-value');
 
