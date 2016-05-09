@@ -1,9 +1,10 @@
 {
   "manifest": [
-    {"id": "test.jpg", "src": "assets/img/test.jpg"},
-    {"id": "bg.mp4", "src": "assets/video/bg.mp4"},
-    {"id": "bg.webm", "src": "assets/video/bg.webm"},
-    {"id": "scroll.mp4", "src": "assets/video/scroll.mp4"},
-    {"id": "scroll.webm", "src": "assets/video/scroll.webm"}
+    {"id": "test_jpg", "src": "assets/img/test.jpg", "seq": "intro"},
+    {"id": "bg_mp4", "src": "assets/video/bg.mp4", "seq": "intro"},
+    {"id": "bg_webm", "src": "assets/video/bg.webm", "seq": "intro"},
+    {"id": "scroll_mp4", "src": "assets/video/scroll.mp4", "seq": "intro"},
+    {"id": "scroll_webm", "src": "assets/video/scroll.webm", "seq": "intro"},
+    {"id": "sanik_mp3", "src": "assets/sound/sanik.mp3", "seq": "entry"}
   ]
 }

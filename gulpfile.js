@@ -8,8 +8,9 @@ var gulp = require('gulp')
   , csscomb = require('gulp-csscomb')
   , cssbeautify = require('gulp-cssbeautify')
   , autoprefixer = require('gulp-autoprefixer')
+  , htmlmin = require('gulp-htmlmin')
   , source = './app/assets/'
-  , dist = './dist/assets/'
+  , dist = './dist/'
   ;
 
 gulp.task('default', function() {
@@ -21,13 +22,13 @@ gulp.task('useref', function(){
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify()))
     .pipe(gulpIf('*.css', cssnano()))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest(dist + 'assets/'))
 });
 
 gulp.task('images', function(){
   return gulp.src(source + 'img/**/*.+(png|jpg|gif|svg)')
   .pipe(cache(imagemin()))
-  .pipe(gulp.dest(dist + 'img'))
+  .pipe(gulp.dest(dist + 'assets/img'))
 });
 
 gulp.task('watch', function(){

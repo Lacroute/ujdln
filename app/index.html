@@ -13,11 +13,21 @@
         <span id="progress-value">0</span>
         <span>%</span>
       </div>
+      <div class="title">
+        <h1>{{ currentChapter | capitalize }}</h1>
+      </div>
 
+      <div class="chapter_control">
+        <button type="button" name="button" @click="nextChapter">
+          Continue ! :)
+        </button>
+      </div>
     </div>
-  <!--build:js assets/js/master.min.js-->
   <script type="text/javascript" src="assets/js/lib/preload-0.6.2.min.js"></script>
-  <script type="text/javascript" src="assets/js/master.js"></script>
+  <script type="text/javascript" src="assets/js/lib/vue.js"></script>
+  <!--build:js assets/js/master.min.js-->
+  <script type="text/javascript" src="assets/js/cache.js"></script>
+  <script type="text/javascript" src="assets/js/chapter.js"></script>
   <!--endbuild-->
   </body>
 </html>
