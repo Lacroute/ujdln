@@ -7,7 +7,11 @@ import Home from './components/Home'
 Vue.use(VueRouter);
 
 /* eslint-disable no-new */
-var router = new VueRouter();
+var router = new VueRouter({
+   history: false,
+   root: '/'
+});
+
 router.map({
     '/intro': {
         component: Intro
@@ -17,5 +21,5 @@ router.map({
     }
 });
 
+
 router.start(App, '#app')
-router.replace('/intro');

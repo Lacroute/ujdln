@@ -1,23 +1,21 @@
 <template>
-  <div>
-    <router-view>
-    </router-view>
-    <div class="loader">
+  <div class="">
+
+    <div class="loader" v-show="progress < 100">
       <h1>{{ progress }}%</h1>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-var loaderMixin = require('vue-loader-mixin');
-
 export default {
   data () {
     return {
-      progress: 0
+      progress: 0,
+      cache: {}
     }
   },
-  mixins: [loaderMixin],
   events: {
         'load:progress': 'onLoadProgress',
         'load:complete': 'onLoadComplete'
@@ -35,20 +33,29 @@ export default {
     ],
 
     ready: function() {
-        // Explicit call
-        this.load();
-    },
+        let Loader = require('resource-loader');
+        let loader = new Loader();
 
-    methods: {
-        onLoadProgress: function(event) {
-            this.progress = Math.round(event.progress);
-            console.log('progress', this.progress);
-        },
+        let manifest = this.$options.manifest;
 
-        onLoadComplete: function(event) {
-            this.progress = 100;
-            // You can use the load:complete event with the `wait-for` directive
-        }
+        manifest.forEach(function(file) {
+            loader.add(file, file);
+        });
+        // loader.add('./static/img/test.jpg', './static/img/test.jpg');
+
+        let that = this;
+        loader.on('progress', function(event, other){
+          that.progress = Math.round(event.progress);
+          console.log('progress', this.progress);
+        });
+
+        loader.on('complete', function(event, resources){
+          console.log('COMPLETE');
+          that.cache = resources;
+          that.$route.router.go('/intro');
+        });
+
+        loader.load();
     }
 }
 </script>
