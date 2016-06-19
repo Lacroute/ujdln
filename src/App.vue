@@ -59,8 +59,7 @@ export default {
 
       loader.on('complete', function(event, resources){
         console.log('COMPLETE');
-        // console.log(that.img_cache);
-        // that.img_cache = resources;
+
         // that.$route.router.go('/intro');
       });
 
