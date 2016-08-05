@@ -1,5 +1,5 @@
 <template>
-  <video class="fullscreen" autoplay loop>
+  <video class="fullscreen" autoplay>
     <source v-bind:src="file_path" type="video/webm"/>
   </video>
 </template>
@@ -10,12 +10,16 @@ export default {
 
   computed: {
     file_path: function(){
-      return "./static/" + this.$route.name + "/video/sequence.webm"
+      return this.$root.vid_cache[this.$route.name].src
     }
   },
 
   ready: function(){
-    console.log(this.$route.name)
+    let that = this
+
+    this.$el.addEventListener('ended', function(){
+      that.$dispatch('end-sequence')
+    }, false)
   }
 }
 </script>

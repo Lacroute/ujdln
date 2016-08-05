@@ -4,7 +4,7 @@
   </div>
   <div v-else>
     <h1>INTRO</h1>
-    <sequence></sequence>
+    <sequence @end-sequence="nextSequence"></sequence>
     <a v-link="{ path: '/home' }">Continue to Home</a>
   </div>
 </template>
@@ -33,6 +33,10 @@ export default {
     removeBlackscreen: function(blackscreen){
       this.bs.$remove(blackscreen);
       this.begin = false;
+    },
+
+    nextSequence: function(){
+      console.log('end-sequence')
     }
   }
 }

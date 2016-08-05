@@ -19,29 +19,31 @@ export default {
     }
   },
 
-    // Static manifest
-    manifest: [
-      './static/intro/video/sequence.webm',
-      './static/home/video/sequence.webm',
+    // list of sequences
+    sequences: [
+      'intro',
+      'home',
     ],
 
     ready: function() {
-      let Loader = require('resource-loader');
-      let loader = new Loader();
+      let Loader = require('resource-loader')
+      let loader = new Loader()
 
-      let that = this;
-      let manifest = that.$options.manifest;
+      let that = this
 
-      manifest.forEach(function(file) {
-          loader.add(file, file);
+      // './static/home/video/sequence.webm',
+      let sequences = that.$options.sequences;
+
+      sequences.forEach(function(file_path) {
+        loader.add(file_path, './static/' + file_path + '/video/sequence.webm')
       });
 
       loader.on('progress', function(event, resource){
-        that.progress = Math.round(event.progress);
-        console.log('progress', this.progress);
-        console.log(resource);
+        that.progress = Math.round(event.progress)
+        console.log('progress', this.progress)
+        console.log(resource)
         if(resource.url.match(/\.(jpe?g|png|gif|bmp)$/i)){
-          console.log('IMG');
+          console.log('IMG')
           that.img_cache.push({
             'name': resource.name,
             'src': resource.url
@@ -53,12 +55,12 @@ export default {
       });
 
       loader.on('complete', function(event, resources){
-        console.log('COMPLETE');
+        console.log('COMPLETE')
 
-        that.$route.router.go('/intro');
+        that.$route.router.go('/intro')
       });
 
-      loader.load();
+      loader.load()
     }
 }
 </script>
