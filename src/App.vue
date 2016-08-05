@@ -21,13 +21,8 @@ export default {
 
     // Static manifest
     manifest: [
-      // './static/img/home/test.jpg'
-      // './static/video/bg.mp4',
-      // './static/video/bg.webm',
-      // './static/video/scroll.mp4',
-      // './static/video/scroll.webm',
-      // './static/video/test.webm',
-      // './static/sound/sanik.mp3',
+      './static/intro/video/sequence.webm',
+      './static/home/video/sequence.webm',
     ],
 
     ready: function() {
@@ -44,7 +39,7 @@ export default {
       loader.on('progress', function(event, resource){
         that.progress = Math.round(event.progress);
         console.log('progress', this.progress);
-        // console.log(resource);
+        console.log(resource);
         if(resource.url.match(/\.(jpe?g|png|gif|bmp)$/i)){
           console.log('IMG');
           that.img_cache.push({
@@ -60,7 +55,7 @@ export default {
       loader.on('complete', function(event, resources){
         console.log('COMPLETE');
 
-        // that.$route.router.go('/intro');
+        that.$route.router.go('/intro');
       });
 
       loader.load();
@@ -83,7 +78,6 @@ body {
 #app {
   color: #2c3e50;
   margin-top: -100px;
-  max-width: 600px;
   font-family: Source Sans Pro, Helvetica, sans-serif;
   text-align: center;
 }

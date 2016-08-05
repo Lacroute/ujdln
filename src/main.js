@@ -14,10 +14,12 @@ var router = new VueRouter({
 
 router.map({
     '/intro': {
-        component: Intro
+      name: 'intro',
+      component: Intro
     },
     '/home': {
-        component: Home
+      name: 'home',
+      component: Home
     }
 });
 

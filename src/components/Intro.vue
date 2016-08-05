@@ -4,26 +4,29 @@
   </div>
   <div v-else>
     <h1>INTRO</h1>
+    <sequence></sequence>
     <a v-link="{ path: '/home' }">Continue to Home</a>
   </div>
 </template>
 
 <script>
 import Blackscreen from './Blackscreen.vue'
+import Sequence from './Sequence.vue'
 
 export default {
   name: 'Intro',
-  components: {Blackscreen},
+  components: {Blackscreen, Sequence},
 
   data () {
     return {
       begin: true,
-      bs: []
+      bs: [],
+      seq: []
     }
   },
 
   ready: function(){
-    this.bs.push({text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'});
+    this.bs.push({text: "Texte d'introduction de la première séquence."});
   },
 
   methods: {

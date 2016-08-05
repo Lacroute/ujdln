@@ -14,13 +14,19 @@ export default {
     'blackscreen'
   ],
 
+  computed: {
+    wordTime: function(){
+      return 400
+    }
+  },
+
   ready: function(){
     let that = this
-    let delay = this.blackscreen.text.split(' ').length * 450
+    let delay = this.blackscreen.text.split(' ').length * this.wordTime
 
     // remove the blackscreen after a certain amount of time
     setTimeout(function(){
-      // that.$dispatch('end-blackscreen', that.blackscreen)
+      that.$dispatch('end-blackscreen', that.blackscreen)
     }, delay)
   }
 }
