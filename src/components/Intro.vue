@@ -1,43 +1,35 @@
 <template>
-  <div v-if="begin">
-    <blackscreen v-for="blackscreen in bs" :blackscreen="blackscreen" @end-blackscreen="removeBlackscreen">
+  <h1><strong>Un jour</strong>dans la nuit</h1>
+  <div class="presentation">
+    <p>Un webdocumentaire d'Amandine Sanial et Clément Procureur</p>
   </div>
-  <div v-else>
-    <h1>INTRO</h1>
-    <sequence @end-sequence="nextSequence"></sequence>
-    <a v-link="{ path: '/home' }">Continue to Home</a>
-  </div>
+  <continue msg="Commencer l'expérience" target="/home"></continue>
 </template>
 
 <script>
-import Blackscreen from './Blackscreen.vue'
-import Sequence from './Sequence.vue'
+import Continue from './Continue.vue'
 
 export default {
   name: 'Intro',
-  components: {Blackscreen, Sequence},
+  components: {Continue},
 
   data () {
     return {
-      begin: true,
-      bs: [],
-      seq: []
     }
   },
 
   ready: function(){
-    this.bs.push({text: "Texte d'introduction de la première séquence."});
-  },
-
-  methods: {
-    removeBlackscreen: function(blackscreen){
-      this.bs.$remove(blackscreen);
-      this.begin = false;
-    },
-
-    nextSequence: function(){
-      console.log('end-sequence')
-    }
   }
 }
 </script>
+
+<style scoped>
+h1{
+  text-transform: uppercase;
+  font-size: 7em;
+}
+h1 strong{
+  font-size: 1.6em;
+  display: block;
+}
+</style>

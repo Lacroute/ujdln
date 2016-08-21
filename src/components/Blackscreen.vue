@@ -33,9 +33,5 @@ export default {
 </script>
 
 <style>
-.blackscreen {
-  background: black;
-  color: white;
 
-}
 </style>

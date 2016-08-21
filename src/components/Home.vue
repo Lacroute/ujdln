@@ -3,20 +3,20 @@
     <blackscreen v-for="blackscreen in bs" :blackscreen="blackscreen" @end-blackscreen="removeBlackscreen">
   </div>
   <div v-else>
-    <h1>HOME</h1>
     <sequence @end-sequence="nextSequence"></sequence>
-    <a v-link="{ path: '/intro' }">Go back to Intro</a>
+    <continue msg="Go back to Intro" target="/intro"></continue>
   </div>
 </template>
 
 <script>
 import Blackscreen from './Blackscreen.vue'
 import Sequence from './Sequence.vue'
+import Continue from './Continue.vue'
 
 export default {
   name: 'Home',
 
-  components: {Blackscreen, Sequence},
+  components: {Blackscreen, Sequence, Continue},
 
   data () {
     return {

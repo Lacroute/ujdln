@@ -57,7 +57,7 @@ export default {
       loader.on('complete', function(event, resources){
         console.log('COMPLETE')
 
-        that.$route.router.go('/intro')
+        // that.$route.router.go('/intro')
       });
 
       loader.load()
@@ -66,6 +66,57 @@ export default {
 </script>
 
 <style>
+@import 'https://fonts.googleapis.com/css?family=Open+Sans|Rubik:900';
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
 html {
   height: 100%;
 }
@@ -75,18 +126,20 @@ body {
   align-items: center;
   justify-content: center;
   height: 100%;
+  background: #111111;
 }
 
 #app {
-  color: #2c3e50;
-  margin-top: -100px;
-  font-family: Source Sans Pro, Helvetica, sans-serif;
+  color: #DDDDDD;
   text-align: center;
 }
 
-#app a {
-  color: #42b983;
-  text-decoration: none;
-  display: block;
+p, a{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+h1{
+  font-family: 'Rubik', sans-serif;
 }
 </style>
