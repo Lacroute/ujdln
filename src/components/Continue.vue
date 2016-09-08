@@ -16,17 +16,16 @@
 
     props: ['msg', 'target'],
 
-    methods: {
-      continue: function () {
-        let el = this.$el
-        this.timeoutID = setTimeout(function(){
-          el.click()
-        }, 2500)
-      },
+    ready: function () {
+      let that = this
+      let link = this.$el
+      let transitions = ['transitionend', 'webkitTransitionEnd', 'oTransitionEnd', 'MSTransitionEnd']
 
-      abort: function(){
-        clearTimeout(this.timeoutID)
-      }
+      transitions.forEach(function(anim) {
+          link.addEventListener(anim, function(){
+            link.click()
+          }, false)
+      })
     }
   }
 </script>
@@ -39,7 +38,7 @@
     padding: 10px;
     border: 1px solid #dddddd;
     border-radius: 1em/3em;
-    transition: color 1s;
+    transition: color 2s;
     position: absolute;
     bottom: 40px;
     left: 50%;
@@ -57,7 +56,7 @@
     -webkit-transform:scaleX(0);
         -ms-transform:scaleX(0);
             transform:scaleX(0);
-            transition: transform 2s cubic-bezier(0, 0.3, 0.15, 1)
+            transition: transform 1.5s cubic-bezier(0, 0.3, 0.15, 1)
   }
 
   a:hover{
@@ -69,6 +68,6 @@
         -ms-transform: scaleX(1);
             transform: scaleX(1);
 
-            transition: transform 2.5s cubic-bezier(0, 0.3, 0.15, 1)
+            transition: transform 2s cubic-bezier(0, 0.3, 0.15, 1)
   }
 </style>

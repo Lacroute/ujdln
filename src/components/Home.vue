@@ -49,11 +49,10 @@ export default {
 
       animations.forEach(function(anim) {
           test.addEventListener(anim, function(){
-            console.log('animation ended')
             that.next = true;
           }, false)
       })
-      
+
       this.begin = false;
     },
 
