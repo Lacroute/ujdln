@@ -1,5 +1,5 @@
 <template>
-  <a v-link="target" @mouseover="continue" @mouseleave="abort">
+  <a v-link="target">
     {{msg}}
   </a>
 </template>
@@ -10,7 +10,8 @@
 
     data: function () {
       return {
-        timeoutID : null
+        timeoutID: null,
+        color_end: 'rgb(17, 17, 17)'
       }
     },
 
@@ -22,9 +23,13 @@
       let transitions = ['transitionend', 'webkitTransitionEnd', 'oTransitionEnd', 'MSTransitionEnd']
 
       transitions.forEach(function(anim) {
-          link.addEventListener(anim, function(){
+        link.addEventListener(anim, function(){
+          // hack to test if it's realy completed
+          if (link.currentStyle && link.currentStyle['color'] === that.color_end)
             link.click()
-          }, false)
+          else if (document.defaultView.getComputedStyle(link, null)['color'] === that.color_end)
+            link.click()
+        }, false)
       })
     }
   }
@@ -38,7 +43,7 @@
     padding: 10px;
     border: 1px solid #dddddd;
     border-radius: 1em/3em;
-    transition: color 2s;
+    transition: color 1.5s;
     position: absolute;
     bottom: 40px;
     left: 50%;
@@ -61,6 +66,7 @@
 
   a:hover{
     color: #111111;
+    transition: color 2.2s;
   }
 
   a:hover:before {

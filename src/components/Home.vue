@@ -6,14 +6,14 @@
           :blackscreen="blackscreen"
           @end-blackscreen="removeBlackscreen">
       </blackscreen>
-
-      <!-- <span v-el:msga>hello</span> -->
     </div>
 
     <div v-if="next" transition="fade" class="animated">
-      <!-- <span v-el:msgg>world</span> -->
       <sequence @end-sequence="nextSequence"></sequence>
-      <continue msg="Go back to Intro" target="/intro"></continue>
+
+      <div v-if="end" transition="fade" class="animated">
+        <continue msg="Go back to Intro" target="/intro"></continue>
+      </div>
     </div>
   </div>
 </template>
@@ -32,8 +32,8 @@ export default {
     return {
       begin: true,
       next: false,
-      bs: [],
-      seq: []
+      end: false,
+      bs: []
     }
   },
 
@@ -57,7 +57,7 @@ export default {
     },
 
     nextSequence: function(){
-      console.log('end-sequence')
+      this.end = true
     }
   }
 }

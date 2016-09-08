@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <video class="fullscreen" autoplay>
+    <video v-el:video class="fullscreen" autoplay>
       <source v-bind:src="file_path" type="video/webm"/>
     </video>
   </div>
@@ -17,11 +17,9 @@ export default {
   },
 
   ready: function(){
-    let that = this
-
-    this.$el.addEventListener('ended', function(){
-      that.$dispatch('end-sequence')
-    }, false)
+    this.$els.video.onended = () => {
+      this.$emit('end-sequence')
+    }
   }
 }
 </script>

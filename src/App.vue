@@ -3,8 +3,13 @@
     <div class="loader" v-show="progress < 100 && progress > 0">
       <h1>{{ progress }}%</h1>
     </div>
-      <router-view transition="fade" transition-mode="out-in" class="animated">
-      </router-view>
+    
+    <router-view
+      transition="fade"
+      transition-mode="out-in"
+      class="animated"
+    >
+    </router-view>
   </div>
 </template>
 
