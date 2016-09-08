@@ -1,11 +1,10 @@
 <template>
-  <div class="">
-
+  <div>
     <div class="loader" v-show="progress < 100 && progress > 0">
       <h1>{{ progress }}%</h1>
     </div>
-    <router-view></router-view>
-
+      <router-view transition="fade" transition-mode="out-in" class="animated">
+      </router-view>
   </div>
 </template>
 
@@ -40,16 +39,12 @@ export default {
 
       loader.on('progress', function(event, resource){
         that.progress = Math.round(event.progress)
-        console.log('progress', this.progress)
-        console.log(resource)
         if(resource.url.match(/\.(jpe?g|png|gif|bmp)$/i)){
-          console.log('IMG')
           that.img_cache.push({
             'name': resource.name,
             'src': resource.url
           });
         }else {
-          console.log('other...');
           that.vid_cache[resource.name] = {'src': resource.url}
         }
       });

@@ -1,10 +1,20 @@
 <template>
-  <div v-if="begin">
-    <blackscreen v-for="blackscreen in bs" :blackscreen="blackscreen" @end-blackscreen="removeBlackscreen">
-  </div>
-  <div v-else>
-    <sequence @end-sequence="nextSequence"></sequence>
-    <continue msg="Go back to Intro" target="/intro"></continue>
+  <div>
+    <div v-if="begin" transition="fade" class="animated" transition-mode="out-in" v-el:test>
+      <blackscreen
+          v-for="blackscreen in bs"
+          :blackscreen="blackscreen"
+          @end-blackscreen="removeBlackscreen">
+      </blackscreen>
+
+      <!-- <span v-el:msga>hello</span> -->
+    </div>
+
+    <div v-if="next" transition="fade" class="animated">
+      <!-- <span v-el:msgg>world</span> -->
+      <sequence @end-sequence="nextSequence"></sequence>
+      <continue msg="Go back to Intro" target="/intro"></continue>
+    </div>
   </div>
 </template>
 
@@ -21,6 +31,7 @@ export default {
   data () {
     return {
       begin: true,
+      next: false,
       bs: [],
       seq: []
     }
@@ -32,7 +43,17 @@ export default {
 
   methods: {
     removeBlackscreen: function(blackscreen){
-      this.bs.$remove(blackscreen);
+      let test = this.$els.test
+      let that = this
+      let animations = ['animationend', 'webkitAnimationEnd', 'oAnimationEnd', 'MSAnimationEnd']
+
+      animations.forEach(function(anim) {
+          test.addEventListener(anim, function(){
+            console.log('animation ended')
+            that.next = true;
+          }, false)
+      })
+      
       this.begin = false;
     },
 

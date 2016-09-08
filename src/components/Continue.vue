@@ -1,32 +1,34 @@
 <template>
-  <a v-link=target @mouseover=continue @mouseleave=abort>{{msg}}</a>
+  <a v-link="target" @mouseover="continue" @mouseleave="abort">
+    {{msg}}
+  </a>
 </template>
 
 <script>
-export default {
-  name: 'Continue',
+  export default {
+    name: 'Continue',
 
-  data: function() {
-    return {
-      timeoutID : null
-    }
-  },
-
-  props: ['msg', 'target'],
-
-  methods: {
-    continue: function(){
-      let el = this.$el
-      this.timeoutID = setTimeout(function(){
-        el.click()
-      }, 2500)
+    data: function () {
+      return {
+        timeoutID : null
+      }
     },
 
-    abort: function(){
-      clearTimeout(this.timeoutID)
+    props: ['msg', 'target'],
+
+    methods: {
+      continue: function () {
+        let el = this.$el
+        this.timeoutID = setTimeout(function(){
+          el.click()
+        }, 2500)
+      },
+
+      abort: function(){
+        clearTimeout(this.timeoutID)
+      }
     }
   }
-}
 </script>
 
 <style scoped>

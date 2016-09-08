@@ -1,7 +1,9 @@
 <template>
-  <video class="fullscreen" autoplay>
-    <source v-bind:src="file_path" type="video/webm"/>
-  </video>
+  <div class="">
+    <video class="fullscreen" autoplay>
+      <source v-bind:src="file_path" type="video/webm"/>
+    </video>
+  </div>
 </template>
 
 <script>
@@ -25,5 +27,7 @@ export default {
 </script>
 
 <style scoped>
-
+  .fullscreen{
+    max-width: 100%;
+  }
 </style>

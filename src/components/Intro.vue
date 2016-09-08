@@ -1,9 +1,11 @@
 <template>
-  <h1><strong>Un jour</strong>dans la nuit</h1>
-  <div class="presentation">
-    <p>Un webdocumentaire d'Amandine Sanial et Clément Procureur</p>
+  <div>
+    <h1><strong>Un jour</strong>dans la nuit</h1>
+    <div class="presentation">
+      <p>Un webdocumentaire d'Amandine Sanial et Clément Procureur</p>
+    </div>
+    <continue msg="Commencer l'expérience" target="/home"></continue>
   </div>
-  <continue msg="Commencer l'expérience" target="/home"></continue>
 </template>
 
 <script>
@@ -11,15 +13,7 @@ import Continue from './Continue.vue'
 
 export default {
   name: 'Intro',
-  components: {Continue},
-
-  data () {
-    return {
-    }
-  },
-
-  ready: function(){
-  }
+  components: {Continue}
 }
 </script>
 
