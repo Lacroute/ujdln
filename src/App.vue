@@ -3,7 +3,7 @@
     <div class="loader" v-show="progress < 100 && progress > 0">
       <h1>{{ progress }}%</h1>
     </div>
-    
+    <meta></meta>
     <router-view
       transition="fade"
       transition-mode="out-in"
@@ -14,7 +14,11 @@
 </template>
 
 <script>
+import Meta from './components/Meta.vue'
+
 export default {
+  components: {Meta},
+
   data () {
     return {
       progress: 0,
