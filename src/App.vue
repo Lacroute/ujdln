@@ -70,7 +70,7 @@ export default {
 </script>
 
 <style>
-@import 'https://fonts.googleapis.com/css?family=Open+Sans|Rubik:900';
+@import 'https://fonts.googleapis.com/css?family==Open+Sans:400,600|Rubik:900';
 
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
@@ -141,9 +141,16 @@ body {
 p, a{
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
+  font-weight: 400;
 }
 
 h1{
   font-family: 'Rubik', sans-serif;
+}
+
+a{
+  text-decoration: none;
+  color: #FFF;
+  font-weight: 600;
 }
 </style>

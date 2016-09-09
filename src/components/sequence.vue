@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <video v-el:video class="fullscreen" autoplay>
+    <video v-el:video class="fullscreen" autoplay controls>
       <source v-bind:src="file_path" type="video/webm"/>
     </video>
   </div>
