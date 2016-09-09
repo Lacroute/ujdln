@@ -33,16 +33,19 @@
 <script>
 export default {
   name: 'Meta',
+
   data() {
     return {
       active: false
     }
   },
+
   methods: {
     toggleActive: function () {
       this.active = !this.active
       this.$root.$emit('toggle-modal', this.active)
     },
+    
     close: function () {
       this.active = false
     }

@@ -38,9 +38,9 @@ export default {
       let loader = new Loader()
 
       // './static/home/video/sequence.webm',
-      this.$options.sequences.forEach(function(file_path) {
+      this.$options.sequences.forEach( (file_path) => {
         loader.add(file_path, './static/' + file_path + '/video/sequence.webm')
-      });
+      })
 
       loader.on('progress', (event, resource) => {
         this.progress = Math.round(event.progress)
@@ -48,17 +48,17 @@ export default {
           this.img_cache.push({
             'name': resource.name,
             'src': resource.url
-          });
+          })
         }else {
           this.vid_cache[resource.name] = {'src': resource.url}
         }
-      });
+      })
 
       loader.on('complete', (event, resources) => {
         console.log('COMPLETE')
 
         // this.$route.router.go('/intro')
-      });
+      })
 
       loader.load()
     }

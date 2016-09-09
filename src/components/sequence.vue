@@ -11,15 +11,13 @@ export default {
   name: 'Sequence',
 
   computed: {
-    file_path: function(){
+    file_path: function () {
       return this.$root.vid_cache[this.$route.name].src
     }
   },
 
-  ready: function(){
-    this.$els.video.onended = () => {
-      this.$emit('end-sequence')
-    }
+  ready: function () {
+    this.$els.video.onended = () => this.$emit('end-sequence')
 
     // Handle modal events
     this.$root.$on('toggle-modal', (isActive) => {

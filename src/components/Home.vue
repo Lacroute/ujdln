@@ -37,24 +37,22 @@ export default {
     }
   },
 
-  ready: function(){
+  ready: function () {
     this.bs.push({text: "Texte d'introduction de la seconde séquence."});
   },
 
   methods: {
-    removeBlackscreen: function(blackscreen){
+    removeBlackscreen: function (blackscreen) {
       let animations = ['animationend', 'webkitAnimationEnd', 'oAnimationEnd', 'MSAnimationEnd']
 
       animations.forEach( (anim) => {
-          this.$els.test.addEventListener(anim, () => {
-            this.next = true;
-          }, false)
+        this.$els.test.addEventListener(anim, () => this.next = true, false)
       })
 
-      this.begin = false;
+      this.begin = false
     },
 
-    nextSequence: function(){
+    nextSequence: function () {
       this.end = true
     }
   }
