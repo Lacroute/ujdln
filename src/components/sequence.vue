@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <video v-el:video class="fullscreen" autoplay controls>
+    <video v-el:video class="fullscreen" autoplay>
       <source v-bind:src="file_path" type="video/webm"/>
     </video>
   </div>
@@ -20,6 +20,13 @@ export default {
     this.$els.video.onended = () => {
       this.$emit('end-sequence')
     }
+
+    // Handle modal events
+    let that = this
+    this.$root.$on('toggle-modal', function (isActive) {
+      if(isActive) that.$els.video.pause()
+      else that.$els.video.play()
+    })
   }
 }
 </script>
