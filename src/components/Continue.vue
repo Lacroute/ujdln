@@ -18,16 +18,15 @@
     props: ['msg', 'target'],
 
     ready: function () {
-      let that = this
       let link = this.$el
       let transitions = ['transitionend', 'webkitTransitionEnd', 'oTransitionEnd', 'MSTransitionEnd']
 
-      transitions.forEach(function(anim) {
-        link.addEventListener(anim, function(){
+      transitions.forEach( (anim) => {
+        link.addEventListener(anim, () => {
           // hack to test if it's realy completed
-          if (link.currentStyle && link.currentStyle['color'] === that.color_end)
+          if (link.currentStyle && link.currentStyle['color'] === this.color_end)
             link.click()
-          else if (document.defaultView.getComputedStyle(link, null)['color'] === that.color_end)
+          else if (document.defaultView.getComputedStyle(link, null)['color'] === this.color_end)
             link.click()
         }, false)
       })

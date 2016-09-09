@@ -43,13 +43,11 @@ export default {
 
   methods: {
     removeBlackscreen: function(blackscreen){
-      let test = this.$els.test
-      let that = this
       let animations = ['animationend', 'webkitAnimationEnd', 'oAnimationEnd', 'MSAnimationEnd']
 
-      animations.forEach(function(anim) {
-          test.addEventListener(anim, function(){
-            that.next = true;
+      animations.forEach( (anim) => {
+          this.$els.test.addEventListener(anim, () => {
+            this.next = true;
           }, false)
       })
 

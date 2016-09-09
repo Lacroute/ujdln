@@ -30,13 +30,12 @@ export default {
   },
 
   ready: function(){
-    let that = this
     this.delay = this.blackscreen.text.split(' ').length * this.wordTime
     this.remaining = this.delay
-    
-    this.$root.$on('toggle-modal', function (isActive) {
-      if(isActive) that.pause()
-      else that.resume()
+
+    this.$root.$on('toggle-modal', (isActive) => {
+      if(isActive) this.pause()
+      else this.resume()
     })
 
     this.resume()
@@ -52,9 +51,8 @@ export default {
       this.start = new Date()
       window.clearTimeout(this.timerId)
 
-      let that = this
-      this.timerId = window.setTimeout(function(){
-        that.$dispatch('end-blackscreen', that.blackscreen)
+      this.timerId = window.setTimeout(() => {
+        this.$dispatch('end-blackscreen', this.blackscreen)
       }, this.remaining);
     }
   }

@@ -37,31 +37,27 @@ export default {
       let Loader = require('resource-loader')
       let loader = new Loader()
 
-      let that = this
-
       // './static/home/video/sequence.webm',
-      let sequences = that.$options.sequences;
-
-      sequences.forEach(function(file_path) {
+      this.$options.sequences.forEach(function(file_path) {
         loader.add(file_path, './static/' + file_path + '/video/sequence.webm')
       });
 
-      loader.on('progress', function(event, resource){
-        that.progress = Math.round(event.progress)
-        if(resource.url.match(/\.(jpe?g|png|gif|bmp)$/i)){
-          that.img_cache.push({
+      loader.on('progress', (event, resource) => {
+        this.progress = Math.round(event.progress)
+        if (resource.url.match(/\.(jpe?g|png|gif|bmp)$/i)) {
+          this.img_cache.push({
             'name': resource.name,
             'src': resource.url
           });
         }else {
-          that.vid_cache[resource.name] = {'src': resource.url}
+          this.vid_cache[resource.name] = {'src': resource.url}
         }
       });
 
-      loader.on('complete', function(event, resources){
+      loader.on('complete', (event, resources) => {
         console.log('COMPLETE')
 
-        // that.$route.router.go('/intro')
+        // this.$route.router.go('/intro')
       });
 
       loader.load()
