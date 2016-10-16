@@ -3,7 +3,7 @@
     <div class="loader" v-show="progress < 100 && progress > 0">
       <h1>{{ progress }}%</h1>
     </div>
-    <meta></meta>
+    <board></board>
     <router-view
       transition="fade"
       transition-mode="out-in"
@@ -14,10 +14,10 @@
 </template>
 
 <script>
-import Meta from './components/Meta.vue'
+import Board from './components/Board.vue'
 
 export default {
-  components: {Meta},
+  components: {Board},
 
   data () {
     return {
@@ -132,6 +132,7 @@ body {
 #app {
   color: #DDDDDD;
   text-align: center;
+  margin: 20px;
 }
 
 p, a{
@@ -140,7 +141,7 @@ p, a{
   font-weight: 400;
 }
 
-h1{
+h1, h2{
   font-family: 'Rubik', sans-serif;
 }
 

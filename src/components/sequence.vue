@@ -19,10 +19,19 @@ export default {
   ready: function () {
     this.$els.video.onended = () => this.$emit('end-sequence')
 
+    this.$els.video.addEventListener('timeupdate', () => {
+      console.log(this.$els.video.currentTime);
+      this.$dispatch('global-progress', this.$els.video.currentTime)
+    })
+
     // Handle modal events
     this.$root.$on('toggle-modal', (isActive) => {
       if(isActive) this.$els.video.pause()
       else this.$els.video.play()
+    })
+
+    this.$root.$on('end-sequence', () => {
+      console.log('end-sequence from sequence')
     })
   }
 }

@@ -45,7 +45,7 @@ export default {
       this.active = !this.active
       this.$root.$emit('toggle-modal', this.active)
     },
-    
+
     close: function () {
       this.active = false
     }
@@ -54,10 +54,11 @@ export default {
 </script>
 <style lang="css" scoped>
   .meta{
-    position: absolute;
+    /*position: absolute;*/
     z-index: 9999;
-    top: 30px;
+    top: 0px;
     right: 30px;
+    margin-left: 20px;
   }
   .meta svg{
     width: 20px;
@@ -80,5 +81,6 @@ export default {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
+    text-align: center;
   }
 </style>
