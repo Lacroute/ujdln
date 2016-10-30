@@ -9,7 +9,7 @@
     </div>
 
     <div v-if="next" transition="fade" class="animated">
-      <sequence @end-sequence="nextSequence"></sequence>
+      <sequence></sequence>
 
       <div v-if="end" transition="fade" class="animated">
         <continue msg="Go back to Intro" target="/intro"></continue>
@@ -24,12 +24,14 @@ import Sequence from './Sequence.vue'
 import Continue from './Continue.vue'
 
 export default {
-  name: 'Home',
+  name: 'Episode',
 
   components: {Blackscreen, Sequence, Continue},
 
   data () {
     return {
+      title_episode: null,
+      next_episode_id: null,
       begin: true,
       next: false,
       end: false,
@@ -38,7 +40,21 @@ export default {
   },
 
   ready: function () {
-    this.bs.push({text: "Texte d'introduction de la seconde séquence."});
+    bus.$emit('get-episode-infos', {
+      title_required: 'monter-au-cerro-rico',
+      cb: (infos) => {
+        console.log('infos !', infos.title_episode);
+        this.title_episode = infos.title_episode
+        this.next_episode_id = infos.next_episode_id
+        this.bs.push({text: infos.blackscreen_content});
+      }
+    })
+
+    bus.$on('end-sequence', () => {
+      this.end = true
+      // bus.$emit('end-episode', this.next_episode_id)
+      bus.$emit('end-episode', 50)
+    })
   },
 
   methods: {
@@ -50,10 +66,7 @@ export default {
       })
 
       this.begin = false
-    },
-
-    nextSequence: function () {
-      this.end = true
+      bus.$emit('begin-episode', this.title_episode)
     }
   }
 }

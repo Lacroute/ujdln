@@ -3,7 +3,7 @@
     <div class="loader" v-show="progress < 100 && progress > 0">
       <h1>{{ progress }}%</h1>
     </div>
-    <board></board>
+    <board v-show="vid_loaded"></board>
     <router-view
       transition="fade"
       transition-mode="out-in"
@@ -22,8 +22,29 @@ export default {
   data () {
     return {
       progress: 0,
+      vid_loaded: false,
       img_cache: [],
-      vid_cache: {}
+      vid_cache: {},
+      scenario: [
+        {
+          "episode_id": 1,
+          "title_episode": "monter-au-cerro-rico",
+          "blackscreen_content": "lol 1",
+          "next_episode_id": 2
+        },
+        {
+          "episode_id": 2,
+          "title_episode": "acheter-de-la-dynamite",
+          "blackscreen_content": "lol 2",
+          "next_episode_id": 3
+        },
+        {
+          "episode_id": 3,
+          "title_episode": "entrer-dans-le-site",
+          "blackscreen_content": "lol 3",
+          "next_episode_id": 4
+        }
+      ]
     }
   },
 
@@ -56,11 +77,47 @@ export default {
 
       loader.on('complete', (event, resources) => {
         console.log('COMPLETE')
-
+        this.vid_loaded = true
         // this.$route.router.go('/intro')
       })
 
       loader.load()
+
+      bus.$on('end-episode', (episode_id) => {
+        let next_episode = this.getEpisodeInfosById(episode_id)
+        if(next_episode == undefined){
+          console.warn('Unable to find the episode.')
+          return
+        }
+        console.log('go to ', next_episode.title_episode);
+      })
+
+      bus.$on('get-episode-infos', (req) => {
+        let infos = this.getEpisodeInfosByTitle (req.title_required)
+        if(infos == undefined){
+          console.warn('Unable to find the episode.')
+          return
+        }
+        req.cb(infos)
+      })
+    },
+
+    methods: {
+      getEpisodeInfosByTitle (title) {
+        let infos = this.scenario.find((scene) => {
+          return scene.title_episode == title
+        })
+
+        return infos
+      },
+
+      getEpisodeInfosById (id) {
+        let infos = this.scenario.find((scene) => {
+          return scene.episode_id == id
+        })
+
+        return infos
+      }
     }
 }
 </script>

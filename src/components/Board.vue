@@ -1,7 +1,7 @@
 <template>
-  <div class="board">
+  <div class="board" v-show="episodeLaunched">
     <div class="container title">
-      <h2>{{sequence_title}}</h2>
+      <h2>{{title_episode}}</h2>
     </div>
     <div class="container globalprogress">
       <progress value="0" max="100"></progress>
@@ -21,8 +21,15 @@
 
     data () {
       return {
-        sequence_title: 'Titre de séquence',
+        title_episode: null,
         progress_elm: null
+      }
+    },
+
+    computed: {
+      episodeLaunched () {
+        return true
+        return this.title_episode != null
       }
     },
 
@@ -31,7 +38,15 @@
       if (!this.progress_elm.getAttribute('max')) this.progress_elm.setAttribute('max', 100);
 
 
-      this.$root.$on('global-progress', (val) => {
+      bus.$on('begin-episode', (title) => {
+        this.title_episode = this.formatTitle(title)
+      })
+
+      bus.$on('end-episode', () => {
+        this.title_episode = null
+      })
+
+      bus.$on('global-progress', (val) => {
         this.updateProgress(val)
       })
     },
@@ -39,8 +54,15 @@
     methods : {
       updateProgress (val) {
         this.progress_elm.value = val
+      },
+
+      formatTitle (title) {
+        title = title.replace(/-/g, ' ')
+        console.log(title);
+        return title.charAt(0).toUpperCase() + title.slice(1);
       }
-    }
+    },
+
   }
 </script>
 

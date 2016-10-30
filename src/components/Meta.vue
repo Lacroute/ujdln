@@ -43,7 +43,7 @@ export default {
   methods: {
     toggleActive: function () {
       this.active = !this.active
-      this.$root.$emit('toggle-modal', this.active)
+      bus.$emit('toggle-modal', this.active)
     },
 
     close: function () {

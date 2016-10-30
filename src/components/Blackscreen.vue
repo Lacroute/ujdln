@@ -33,7 +33,7 @@ export default {
     this.delay = this.blackscreen.text.split(' ').length * this.wordTime
     this.remaining = this.delay
 
-    this.$root.$on('toggle-modal', (isActive) => {
+    bus.$on('toggle-modal', (isActive) => {
       if(isActive) this.pause()
       else this.resume()
     })
