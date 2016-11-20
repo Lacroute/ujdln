@@ -28,18 +28,51 @@ export default {
       scenario: [
         {
           "episode_id": 1,
+          "video_base": "monter-au-cerro-rico",
+          "subtitle": "monter-au-cerro-rico.srt",
+          "transparents": [],
+          "inserts": [],
+          "graphics": [],
+          "blackscreens": [
+            {
+              "start": 0,
+              "content": "lorem ipsum dolor simet 1",
+            }
+          ],
           "title_episode": "monter-au-cerro-rico",
-          "blackscreen_content": "lol 1",
+          "blackscreen_content": "lorem ipsum dolor simet 1",
           "next_episode_id": 2
         },
         {
           "episode_id": 2,
+          "video_base": "acheter-de-la-dynamite",
+          "subtitle": "acheter-de-la-dynamite.srt",
+          "transparents": [],
+          "inserts": [],
+          "graphics": [],
+          "blackscreens": [
+            {
+              "start": 0,
+              "content": "lorem ipsum dolor simet 2",
+            }
+          ],
           "title_episode": "acheter-de-la-dynamite",
           "blackscreen_content": "lol 2",
           "next_episode_id": 3
         },
         {
           "episode_id": 3,
+          "video_base": "entrer-dans-le-site",
+          "subtitle": "entrer-dans-le-site.srt",
+          "transparents": [],
+          "inserts": [],
+          "graphics": [],
+          "blackscreens": [
+            {
+              "start": 0,
+              "content": "lorem ipsum dolor simet 3",
+            }
+          ],
           "title_episode": "entrer-dans-le-site",
           "blackscreen_content": "lol 3",
           "next_episode_id": 4

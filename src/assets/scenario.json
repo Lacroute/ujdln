@@ -1,6 +1,12 @@
 [
   {
     "episode_id": 1,
+    "video_base": "monter-au-cerro-rico",
+    "subtitle": "monter-au-cerro-rico.srt",
+    "transparents": [],
+    "inserts": [],
+    "graphics": [],
+    "blackscreens": [],
     "title_episode": "monter-au-cerro-rico",
     "blackscreen_content": "lorem ipsum dolor simet 1",
     "next_episode_id": 2
