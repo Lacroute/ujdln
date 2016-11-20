@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import Blackscreen from './Blackscreen.vue'
+import Blackscreen from './overlays/Blackscreen.vue'
 import Sequence from './Sequence.vue'
 import Continue from './Continue.vue'
 
@@ -39,7 +39,7 @@ export default {
     }
   },
 
-  ready: function () {
+  ready () {
     bus.$emit('get-episode-infos', {
       title_required: 'monter-au-cerro-rico',
       cb: (infos) => {
@@ -58,7 +58,7 @@ export default {
   },
 
   methods: {
-    removeBlackscreen: function (blackscreen) {
+    removeBlackscreen () {
       let animations = ['animationend', 'webkitAnimationEnd', 'oAnimationEnd', 'MSAnimationEnd']
 
       animations.forEach( (anim) => {
