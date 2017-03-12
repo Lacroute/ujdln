@@ -1,98 +1,98 @@
-[
-  {
-    "episode_id": 1,
-    "video_base": "monter-au-cerro-rico",
+{
+  "1": {
+    "video_file": "sequence",
     "subtitle": "monter-au-cerro-rico.srt",
     "transparents": [],
     "inserts": [],
     "graphics": [],
     "blackscreens": [],
-    "title_episode": "monter-au-cerro-rico",
+    "video_file": "sequence",
+    "title": "monter-au-cerro-rico",
     "blackscreen_content": "lorem ipsum dolor simet 1",
     "next_episode_id": 2
   },
-  {
-    "episode_id": 2,
-    "title_episode": "acheter-de-la-dynamite",
+  "2": {
+    "video_file": "sequence",
+    "title": "acheter-de-la-dynamite",
     "blackscreen_content": "lorem ipsum dolor simet 2",
     "next_episode_id": 3
   },
-  {
-    "episode_id": 3,
-    "title_episode": "entrer-dans-le-site",
+  "3": {
+    "video_file": "sequence",
+    "title": "entrer-dans-le-site",
     "blackscreen_content": "lorem ipsum dolor simet 3",
     "next_episode_id": 4
   },
-  {
-    "episode_id": 4,
-    "sequence_title": "conseils-du-doyen",
+  "4": {
+    "video_file": "sequence",
+    "title": "conseils-du-doyen",
     "blackscreen_content": "lorem ipsum dolor simet 4",
     "next_episode_id": 5
   },
-  {
-    "episode_id": 5,
-    "sequence_title": "alvaro",
+  "5": {
+    "video_file": "sequence",
+    "title": "alvaro",
     "blackscreen_content": "lorem ipsum dolor simet 5",
     "next_episode_id": 6
   },
-  {
-    "episode_id": 6,
-    "sequence_title": "descendre-dans-la-mine",
+  "6": {
+    "video_file": "sequence",
+    "title": "descendre-dans-la-mine",
     "blackscreen_content": "lorem ipsum dolor simet 6",
     "next_episode_id": 7
   },
-  {
-    "episode_id": 7,
-    "sequence_title": "les-minerais",
+  "7": {
+    "video_file": "sequence",
+    "title": "les-minerais",
     "blackscreen_content": "lorem ipsum dolor simet 7",
     "next_episode_id": 8
   },
-  {
-    "episode_id": 8,
-    "sequence_title": "la-coca",
+  "8": {
+    "video_file": "sequence",
+    "title": "la-coca",
     "blackscreen_content": "lorem ipsum dolor simet 8",
     "next_episode_id": 9
   },
-  {
-    "episode_id": 9,
-    "sequence_title": "el-tio",
+  "9": {
+    "video_file": "sequence",
+    "title": "el-tio",
     "blackscreen_content": "lorem ipsum dolor simet 9",
     "next_episode_id": 10
   },
-  {
-    "episode_id": 10,
-    "sequence_title": "qui-suivre",
+  "10": {
+    "video_file": "sequence",
+    "title": "qui-suivre",
     "blackscreen_content": "lorem ipsum dolor simet 10",
     "next_episode_id": false
   },
-  {
-    "episode_id": 20,
-    "sequence_title": "l-histoire-de-freddie",
+  "20": {
+    "video_file": "sequence",
+    "title": "l-histoire-de-freddie",
     "blackscreen_content": "lorem ipsum dolor simet 20",
     "next_episode_id": 21
   },
-  {
-    "episode_id": 21,
-    "sequence_title": "l-accident-de-freddie",
+  "21": {
+    "video_file": "sequence",
+    "title": "l-accident-de-freddie",
     "blackscreen_content": "lorem ipsum dolor simet 21",
     "next_episode_id": 30
   },
-  {
-    "episode_id": 30,
-    "sequence_title": "les-maladies-de-la-mine",
+  "30": {
+    "video_file": "sequence",
+    "title": "les-maladies-de-la-mine",
     "blackscreen_content": "lorem ipsum dolor simet 30",
     "next_episode_id": 31
   },
-  {
-    "episode_id": 31,
-    "sequence_title": "boum",
+  "31": {
+    "video_file": "sequence",
+    "title": "boum",
     "blackscreen_content": "lorem ipsum dolor simet 31",
     "next_episode_id": 32
   },
-  {
-    "episode_id": 32,
-    "sequence_title": "sortir-de-la-mine",
+  "32": {
+    "video_file": "sequence",
+    "title": "sortir-de-la-mine",
     "blackscreen_content": "lorem ipsum dolor simet 32",
     "next_episode_id": "end"
   }
-]
+}

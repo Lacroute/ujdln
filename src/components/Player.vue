@@ -1,6 +1,6 @@
 <template>
   <div class="player">
-    <video ref="video" loop controls @click="playPause">
+    <video ref="video" controls @click="playPause">
       <source :src="requireVideo(mp4)" type="video/mp4"/>
       <source :src="requireVideo(webm)" type="video/webm"/>
       <p v-html="noSupport"></p>
@@ -20,10 +20,12 @@ export default {
   name: 'Player',
   components: {ProgressBar},
 
+  props: {
+    sequence: String
+  },
 
   data () {
     return {
-      filename: 'sequence',
       noSupport: 'Votre navigateur ne prend pas en charge la balise video.',
       isPaused: true,
       progress: {
@@ -35,14 +37,17 @@ export default {
 
 
   computed: {
-    mp4 () { return `${this.filename}.mp4` },
-    webm () { return `${this.filename}.webm` }
+    mp4 () { return `${this.sequence}.mp4` },
+    webm () { return `${this.sequence}.webm` }
   },
 
 
   mounted () {
+    let v = this.$refs.video
+    v.controls = false
+    v.onended = this.onEnd
+
     this.initProgress()
-    this.$refs.video.controls = false
     this.playPause()
   },
 
@@ -63,6 +68,11 @@ export default {
       let v = this.$refs.video
       v.addEventListener('loadedmetadata', _ => { this.progress.max = v.duration })
       v.addEventListener('timeupdate', _ => { this.progress.value = v.currentTime })
+    },
+
+
+    onEnd () {
+      console.log('END')
     }
   }
 }
