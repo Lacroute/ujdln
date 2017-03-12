@@ -6,13 +6,12 @@
     "inserts": [],
     "graphics": [],
     "blackscreens": [],
-    "video_file": "sequence",
     "title": "monter-au-cerro-rico",
     "blackscreen_content": "lorem ipsum dolor simet 1",
     "next_episode_id": 2
   },
   "2": {
-    "video_file": "sequence",
+    "video_file": "lorem-ipsum-video",
     "title": "acheter-de-la-dynamite",
     "blackscreen_content": "lorem ipsum dolor simet 2",
     "next_episode_id": 3

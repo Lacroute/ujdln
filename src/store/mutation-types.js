@@ -1,1 +1,1 @@
-export const ADD_TO_CART = 'ADD_TO_CART'
+export const NEXT_EPISODE = 'NEXT_EPISODE'

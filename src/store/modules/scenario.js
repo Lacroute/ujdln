@@ -16,12 +16,15 @@ const getters = {
 // actions
 const actions = {
 
+  nextEpisode ({ commit, getters }) {
+    commit(types.NEXT_EPISODE, getters.currentEpisode.next_episode_id)
+  }
 }
 
 // mutations
 const mutations = {
-  [types.CHECKOUT_SUCCESS] (state) {
-    state.checkoutStatus = 'successful'
+  [types.NEXT_EPISODE] (state, nextEpisodeId) {
+    state.episodeId = nextEpisodeId
   }
 }
 

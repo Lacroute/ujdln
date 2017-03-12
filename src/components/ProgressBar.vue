@@ -33,6 +33,6 @@ export default{
   display: block;
   height: 100%;
   background: red;
-  transition: all .5s ease;
+  transition: all 250ms ease;
 }
 </style>

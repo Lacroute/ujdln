@@ -7,7 +7,9 @@
 
 <script>
 import Player from '@/components/Player'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
+import bus from '@/bus'
+import { VIDEO_ENDED, START_SEQUENCE } from '@/bus/bus-events'
 
 export default {
   name: 'Theater',
@@ -25,6 +27,33 @@ export default {
       title: 'currentTitle',
       sequence: 'currentSequence'
     })
+  },
+
+
+  created () {
+    this.setupListener()
+    bus.$on(START_SEQUENCE, this.nextEpisode)
+  },
+
+  beforeDestroy () {
+    this.removeListener()
+  },
+
+
+  methods: {
+    ...mapActions({
+      nextEpisode: 'nextEpisode'
+    }),
+
+
+    setupListener () {
+      bus.$on(VIDEO_ENDED, this.nextEpisode)
+    },
+
+
+    removeListener () {
+      bus.$off(VIDEO_ENDED, this.nextEpisode)
+    }
   }
 }
 </script>
