@@ -2,15 +2,17 @@ import * as types from '../mutation-types'
 import episodes from '@/assets/episodes.json'
 
 const state = {
-  episodeId: 1,
-  all: episodes
+  episodeId: 1
 }
 
 // getters
 const getters = {
+  episodesCount: state => Object.keys(episodes).length,
   currentEpisode: state => episodes[state.episodeId],
   currentTitle: (state, getters) => getters.currentEpisode.title,
-  currentSequence: (state, getters) => getters.currentEpisode.video_file
+  currentSequence: (state, getters) => getters.currentEpisode.video_file,
+  currentBSContent: (state, getters) => getters.currentEpisode.blackscreen_content,
+  globalProgress: (state, getters) => ({value: state.episodeId, max: getters.episodesCount})
 }
 
 // actions

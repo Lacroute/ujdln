@@ -10,7 +10,8 @@ export default{
   name: 'ProgressBar',
 
   props: {
-    progressEvent: Object
+    progressEvent: Object,
+    customStyle: Object
   },
 
   computed: {
@@ -22,7 +23,7 @@ export default{
 
 </script>
 
-<style scoped style="scss">
+<style scoped lang="scss">
 .progress {
   width: 100%;
   height: 4px;

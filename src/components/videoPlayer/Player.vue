@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import ProgressBar from '@/components/ProgressBar'
+import ProgressBar from './ProgressBar'
 import bus from '@/bus'
-import { VIDEO_ENDED, START_SEQUENCE } from '@/bus/bus-events'
+import { VIDEO_ENDED, START_VIDEO, VIDEO_CAN_PLAY_THROUGH } from '@/bus/bus-events'
 
 
 export default {
@@ -50,8 +50,6 @@ export default {
     sequence (newVideoFile) {
       console.log('watch', newVideoFile)
       this.$refs.video.load()
-
-      // this.setSources()
     }
   },
 
@@ -64,8 +62,15 @@ export default {
     this.setSources()
     this.initProgress()
     this.setupListener()
-    // Start the video
-    this.playPause()
+    v.load()
+
+    v.addEventListener('canplaythrough', this.canPlayThrough)
+    // If the video is in the cache of the browser,
+    // the 'canplaythrough' event might have been triggered
+    // before we registered the event handler.
+    if (v.readyState > 3) {
+      this.canPlayThrough()
+    }
   },
 
 
@@ -80,12 +85,12 @@ export default {
 
 
     setupListener () {
-      bus.$on(START_SEQUENCE, this.playPause)
+      bus.$on(START_VIDEO, this.playPause)
     },
 
 
     removeListener () {
-      bus.$off(START_SEQUENCE, this.playPause)
+      bus.$off(START_VIDEO, this.playPause)
     },
 
 
@@ -93,6 +98,11 @@ export default {
       this.$refs.sourceMp4.src = this.requireVideo(this.mp4)
       this.$refs.sourceWebm.src = this.requireVideo(this.webm)
       this.$refs.video.load()
+    },
+
+
+    canPlayThrough () {
+      bus.$emit(VIDEO_CAN_PLAY_THROUGH)
     },
 
     // Handle play/pause event.
@@ -106,7 +116,10 @@ export default {
     // Dispatch the currentTime of the video to the progress component.
     initProgress () {
       let v = this.$refs.video
-      v.addEventListener('loadedmetadata', _ => { this.progress.max = v.duration })
+      v.addEventListener('loadedmetadata', _ => {
+        console.log('loadedmetadata')
+        this.progress.max = v.duration
+      })
       v.addEventListener('timeupdate', _ => { this.progress.value = v.currentTime })
     },
 
@@ -120,7 +133,7 @@ export default {
 }
 </script>
 
-<style scoped style="scss">
+<style scoped lang="scss">
 .player{
   position: relative;
 }
@@ -138,4 +151,5 @@ video::-webkit-media-controls {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 </style>
