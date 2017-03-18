@@ -9,10 +9,10 @@ const state = {
 const getters = {
   episodesCount: state => Object.keys(episodes).length,
   currentEpisode: state => episodes[state.episodeId],
-  currentEpisodeType: (state, getters) => getters.currentEpisode.type,
   currentTitle: (state, getters) => getters.currentEpisode.title,
   currentSequence: (state, getters) => getters.currentEpisode.video_file,
   currentBSContent: (state, getters) => getters.currentEpisode.blackscreen_content,
+  nextEpisode: (state, getters) => episodes[getters.currentEpisode.next_episode_id],
   globalProgress: (state, getters) => ({value: state.episodeId - 1, max: getters.episodesCount - 1})
 }
 

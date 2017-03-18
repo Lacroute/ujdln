@@ -1,5 +1,6 @@
 {
   "1": {
+    "episodeId": 1,
     "type": "sequence",
     "video_file": "sequence",
     "subtitle": "monter-au-cerro-rico.srt",
@@ -12,12 +13,15 @@
     "next_episode_id": 2
   },
   "2": {
+    "episodeId": 2,
+    "type": "sequence",
     "video_file": "lorem-ipsum-video",
     "title": "acheter-de-la-dynamite",
     "blackscreen_content": "lorem ipsum dolor simet 2",
     "next_episode_id": 3
   },
   "3": {
+    "episodeId": 3,
     "type": "sequence",
     "video_file": "sequence",
     "title": "entrer-dans-le-site",
@@ -25,6 +29,7 @@
     "next_episode_id": 4
   },
   "4": {
+    "episodeId": 4,
     "type": "sequence",
     "video_file": "lorem-ipsum-video",
     "title": "conseils-du-doyen",
@@ -32,6 +37,7 @@
     "next_episode_id": 5
   },
   "5": {
+    "episodeId": 5,
     "type": "sequence",
     "video_file": "sequence",
     "title": "alvaro",
@@ -39,6 +45,7 @@
     "next_episode_id": 6
   },
   "6": {
+    "episodeId": 6,
     "type": "sequence",
     "video_file": "lorem-ipsum-video",
     "title": "descendre-dans-la-mine",
@@ -46,6 +53,7 @@
     "next_episode_id": 7
   },
   "7": {
+    "episodeId": 7,
     "type": "sequence",
     "video_file": "sequence",
     "title": "les-minerais",
@@ -53,6 +61,7 @@
     "next_episode_id": 8
   },
   "8": {
+    "episodeId": 8,
     "type": "sequence",
     "video_file": "lorem-ipsum-video",
     "title": "la-coca",
@@ -60,6 +69,7 @@
     "next_episode_id": 9
   },
   "9": {
+    "episodeId": 9,
     "type": "sequence",
     "video_file": "sequence",
     "title": "el-tio",
@@ -67,6 +77,7 @@
     "next_episode_id": 10
   },
   "10": {
+    "episodeId": 10,
     "type": "crossroad",
     "video_file": "lorem-ipsum-video",
     "title": "qui-suivre",
@@ -74,6 +85,7 @@
     "next_episode_id": false
   },
   "20": {
+    "episodeId": 20,
     "type": "sequence",
     "video_file": "sequence",
     "title": "l-histoire-de-freddie",
@@ -81,6 +93,7 @@
     "next_episode_id": 21
   },
   "21": {
+    "episodeId": 21,
     "type": "sequence",
     "video_file": "lorem-ipsum-video",
     "title": "l-accident-de-freddie",
@@ -88,6 +101,7 @@
     "next_episode_id": 30
   },
   "30": {
+    "episodeId": 30,
     "type": "sequence",
     "video_file": "sequence",
     "title": "les-maladies-de-la-mine",
@@ -95,6 +109,7 @@
     "next_episode_id": 31
   },
   "31": {
+    "episodeId": 31,
     "type": "sequence",
     "video_file": "sequence",
     "title": "boum",
@@ -102,6 +117,7 @@
     "next_episode_id": 32
   },
   "32": {
+    "episodeId": 32,
     "type": "sequence",
     "video_file": "lorem-ipsum-video",
     "title": "sortir-de-la-mine",

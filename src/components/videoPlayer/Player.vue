@@ -69,6 +69,7 @@ export default {
     // the 'canplaythrough' event might have been triggered
     // before we registered the event handler.
     if (v.readyState > 3) {
+      console.error('readyState')
       this.canPlayThrough()
     }
   },

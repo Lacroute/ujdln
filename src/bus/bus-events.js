@@ -1,5 +1,6 @@
 export const VIDEO_ENDED = 'video-ended'
 export const START_VIDEO = 'start-video'
 export const START_SEQUENCE = 'start-sequence'
+export const SEQUENCE_ENDED = 'sequence-ended'
 export const FADE_BLACKSCREEN = 'fade-blackscreen'
 export const VIDEO_CAN_PLAY_THROUGH = 'video-can-play-through'
