@@ -1,8 +1,8 @@
 <template>
   <div class="theater">
     <header>
-      <h1>{{title}}</h1>
       <global-progress></global-progress>
+      <h1>{{title}}</h1>
     </header>
 
     <section class="scene" :style="{minHeight: minHeightPlayer}">

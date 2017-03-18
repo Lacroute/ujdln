@@ -31,9 +31,8 @@ export default {
 <style scoped lang="scss">
 .progress {
   width: 100%;
-  height: 4px;
-  background-color: #eee;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  height: 10px;
+  background-color: transparent;
 }
 .progress-bar {
   display: block;

@@ -139,6 +139,7 @@ export default {
 }
 video{
   max-width: 100%;
+  display: block;
 }
 
 /* CONTROLS*/

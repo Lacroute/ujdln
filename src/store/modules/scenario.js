@@ -12,7 +12,7 @@ const getters = {
   currentTitle: (state, getters) => getters.currentEpisode.title,
   currentSequence: (state, getters) => getters.currentEpisode.video_file,
   currentBSContent: (state, getters) => getters.currentEpisode.blackscreen_content,
-  globalProgress: (state, getters) => ({value: state.episodeId, max: getters.episodesCount})
+  globalProgress: (state, getters) => ({value: state.episodeId - 1, max: getters.episodesCount})
 }
 
 // actions
