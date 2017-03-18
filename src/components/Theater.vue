@@ -19,11 +19,19 @@ import BlackScreen from '@/components/videoPlayer/BlackScreen'
 
 import bus from '@/bus'
 import { VIDEO_ENDED, START_VIDEO, FADE_BLACKSCREEN, VIDEO_CAN_PLAY_THROUGH } from '@/bus/bus-events'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
+import * as types from '@/store/mutation-types'
 
 export default {
   name: 'Theater',
   components: {GlobalProgress, Player, BlackScreen},
+
+  props: {
+    routeEpisodeId: {
+      type: String,
+      default: '0'
+    }
+  },
 
   data () {
     return {
@@ -37,7 +45,7 @@ export default {
   computed: {
     ...mapGetters({
       progress: 'globalProgress',
-      episode: 'currentEpisode',
+      episodeType: 'currentEpisodeType',
       title: 'currentTitle',
       sequence: 'currentSequence',
       bSContent: 'currentBSContent'
@@ -51,6 +59,7 @@ export default {
 
   created () {
     this.setupListener()
+    this.setupEpisode(this.routeEpisodeId)
   },
 
   mounted () {
@@ -63,8 +72,9 @@ export default {
 
 
   methods: {
-    ...mapActions({
-      nextEpisode: 'nextEpisode'
+    ...mapMutations({
+      setupEpisode: types.SETUP_EPISODE,
+      nextEpisode: types.NEXT_EPISODE
     }),
 
 
@@ -105,8 +115,13 @@ export default {
     },
 
     nextSequence () {
-      this.nextEpisode()
-      this.fadeInBlackScreen()
+      if (this.episodeType === 'sequence') {
+        this.nextEpisode()
+        this.fadeInBlackScreen()
+      }
+      if (this.episodeType === 'crossroad') {
+
+      }
     }
   }
 }

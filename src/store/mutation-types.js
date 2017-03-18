@@ -1,1 +1,2 @@
 export const NEXT_EPISODE = 'NEXT_EPISODE'
+export const SETUP_EPISODE = 'SETUP_EPISODE'

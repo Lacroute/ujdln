@@ -13,9 +13,13 @@ export default new Router({
       component: Home
     },
     {
-      path: '/story',
+      path: '/story/:routeEpisodeId',
       name: 'story',
-      component: Theater
+      component: Theater,
+      props: true
+      // children: [
+      //   {path: ':name', component: Theater, props: true}
+      // ]
     }
   ]
 })

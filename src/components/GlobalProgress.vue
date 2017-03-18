@@ -38,6 +38,6 @@ export default {
   display: block;
   height: 100%;
   background: gold;
-  transition: all 750ms ease;
+  transition: all 1000ms ease;
 }
 </style>
