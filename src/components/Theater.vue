@@ -3,6 +3,7 @@
     <header>
       <global-progress></global-progress>
       <h1>{{title}}</h1>
+      <p>{{ $t("message.hello") }}</p>
     </header>
 
     <section class="scene" :style="{minHeight: minHeightPlayer}">

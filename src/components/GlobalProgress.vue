@@ -44,6 +44,7 @@ export default {
       return Math.floor((x / this.progress.max) * 100)
     },
 
+
     bulletClass (index) {
       return {
         active: this.progress.value === index,
