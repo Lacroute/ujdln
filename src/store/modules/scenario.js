@@ -16,6 +16,7 @@ const getters = {
   currentTitle: (state, getters) => getters.currentEpisode.title,
   currentSequence: (state, getters) => getters.currentEpisode.video_file,
   currentBSContent: (state, getters) => getters.currentEpisode.blackscreen_content,
+  currentChoices: (state, getters) => getters.currentEpisode.choices,
   nextEpisode: (state, getters) => {
     if (Array.isArray(getters.currentEpisode.next_episode_id)) {
       return getters.currentEpisode.next_episode_id.map(id => episodes[id])

@@ -7,7 +7,6 @@
     "transparents": [],
     "inserts": [],
     "graphics": [],
-    "blackscreens": [],
     "title": "monter-au-cerro-rico",
     "blackscreen_content": "lorem ipsum dolor simet 1",
     "next_episode_id": 2
@@ -30,9 +29,13 @@
   },
   "4": {
     "episodeId": 4,
-    "type": "sequence",
-    "video_file": "lorem-ipsum-video",
+    "type": "choice",
     "title": "conseils-du-doyen",
+    "choices": [
+      {"question": "question-1", "video_file": "lorem-ipsum-video", "cover": "PowderBlue"},
+      {"question": "question-2", "video_file": "sequence", "cover": "Tan"},
+      {"question": "question-3", "video_file": "lorem-ipsum-video", "cover": "PaleGreen"}
+    ],
     "blackscreen_content": "lorem ipsum dolor simet 4",
     "next_episode_id": 5
   },

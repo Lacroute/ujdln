@@ -47,7 +47,6 @@ export default {
 
 <style lang="scss">
 .crossroad{
-  background: lightgrey;
   height: 1px;
 }
 .choices{
