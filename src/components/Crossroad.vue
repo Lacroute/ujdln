@@ -2,7 +2,7 @@
   <div class="crossroad" :style="{minHeight: minHeightPlayer}">
     <div class="choices">
       <div class="choice" v-for="episode in nextEpisodes" @click="choose(episode.episodeId)" :style="{background: episode.cover}">
-        <p>{{ episode.title }}</p>
+        <p>{{ $t(episode.title) }}</p>
       </div>
     </div>
   </div>

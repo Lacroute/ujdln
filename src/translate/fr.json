@@ -1,5 +1,26 @@
 {
-  "message": {
-    "hello": "Bonjour world"
+  "monter-au-cerro-rico": "Monter au cerro rico",
+  "acheter-de-la-dynamite": "Acheter de la dynamite",
+  "entrer-dans-le-site": "Entrer dans le site",
+  "conseils-du-doyen": "Conseils du doyen",
+  "alvaro": "Alvaro",
+  "descendre-dans-la-mine": "Descendre dans la mine",
+  "les-minerais": "Les minerais",
+  "la-coca": "La coca",
+  "el-tio": "El tio",
+  "qui-suivre": "Qui suivre ?",
+  "l-histoire-de-freddie": "L'histoire de freddie",
+  "l-accident-de-freddie": "L'accident de freddie",
+  "les-maladies-de-la-mine": "Les maladies de la mine",
+  "boum": "Boum",
+  "sortir-de-la-mine": "Sortir de la mine",
+  "end-title": "C'est fini poto",
+  "questions": {
+    "question-1": "La question 1 ?",
+    "question-2": "La question 2 ?",
+    "question-3": "La question 3 ?"
+  },
+  "interface": {
+    "nextSequence": "Sauter cet épisode"
   }
 }

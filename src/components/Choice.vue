@@ -7,7 +7,7 @@
       >
       </question>
     </div>
-    <button type="button" name="skip" @click="nextSequence">nextSequence</button>
+    <button type="button" name="skip" @click="nextSequence">{{ $t('interface.nextSequence') }}</button>
     <div v-if="sequence" class="player-wrapper">
       <player :sequence="sequence"></player>
     </div>

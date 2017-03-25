@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Fini p'tit gars</h1>
   </div>
 </template>
 <script>

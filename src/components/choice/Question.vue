@@ -1,6 +1,6 @@
 <template>
   <div :class="classObject" @click="choose(videoFile)" :style="{background: cover}">
-    <p>{{ question }}</p>
+    <p>{{ $t(`questions.${question}`) }}</p>
   </div>
 </template>
 <script>
