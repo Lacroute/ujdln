@@ -2,7 +2,11 @@ import * as types from '../mutation-types'
 import episodes from '@/assets/episodes.json'
 
 const state = {
-  episodeId: 1
+  episodeId: 1,
+  globalProgress: {
+    value: 0,
+    max: Object.keys(episodes).length - 1
+  }
 }
 
 // getters
@@ -19,7 +23,7 @@ const getters = {
       return episodes[getters.currentEpisode.next_episode_id]
     }
   },
-  globalProgress: (state, getters) => ({value: state.episodeId - 1, max: getters.episodesCount - 1})
+  globalProgress: (state, getters) => state.globalProgress
 }
 
 // actions
@@ -35,11 +39,7 @@ const mutations = {
   [types.SETUP_EPISODE] (state, episodeId) {
     if (episodes[episodeId]) state.episodeId = episodeId
     else state.episodeId = Object.keys(episodes)[0]
-  },
-
-
-  [types.NEXT_EPISODE] (state, nextEpisodeId) {
-    state.episodeId = nextEpisodeId
+    state.globalProgress.value = Object.keys(episodes).findIndex(id => id === episodeId)
   }
 }
 

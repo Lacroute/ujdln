@@ -55,11 +55,7 @@ export default {
 
   watch: {
     routeEpisodeId (id) {
-      if (id === 'end') {
-        console.log('THIS IS THE END')
-      } else {
-        this.setupEpisode(id)
-      }
+      this.setupEpisode(id)
     }
   },
 

@@ -24,13 +24,9 @@ export default new Router({
       children: [
         {path: 'sequence/:routeEpisodeId', name: 'sequence', component: Sequence},
         {path: 'crossroad/:routeEpisodeId', name: 'crossroad', component: Crossroad},
-        {path: 'choice/:routeEpisodeId', name: 'choice', component: Choice}
+        {path: 'choice/:routeEpisodeId', name: 'choice', component: Choice},
+        {path: 'the/:routeEpisodeId', name: 'end', component: End}
       ]
-    },
-    {
-      path: '/end',
-      name: 'end',
-      component: End
     }
   ]
 })
