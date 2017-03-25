@@ -7,7 +7,7 @@
       </g>
       <g class="bullet" v-for="(episode, index) in episodes">
         <circle :class="bulletClass(index)" :cx="`${linearScale(index)}%`" cy="50%" r="5"></circle>
-        <circle :cx="`${linearScale(index)}%`" cy="50%" r="12" class="invisible"></circle>
+        <circle :cx="`${linearScale(index)}%`" cy="50%" r="12" class="invisible" @click="jumpSequence(episode)"></circle>
       </g>
     </svg>
   </div>
@@ -15,6 +15,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import episodes from '@/assets/episodes.json'
+
 export default {
   name: 'GlobalProgress',
 
@@ -47,6 +49,14 @@ export default {
         active: this.progress.value === index,
         activated: this.progress.value > index
       }
+    },
+
+
+    jumpSequence (episodeId) {
+      this.$router.push({
+        name: episodes[episodeId].type,
+        params: {routeEpisodeId: `${episodeId}`}}
+      )
     }
   }
 }
