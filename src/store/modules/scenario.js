@@ -11,7 +11,7 @@ const state = {
 
 // getters
 const getters = {
-  episodesCount: state => Object.keys(episodes).length,
+  episodesKeys: state => Object.keys(episodes),
   currentEpisode: state => episodes[state.episodeId],
   currentTitle: (state, getters) => getters.currentEpisode.title,
   currentSequence: (state, getters) => getters.currentEpisode.video_file,
