@@ -5,6 +5,7 @@ import Theater from '@/components/Theater'
 import Sequence from '@/components/Sequence'
 import Crossroad from '@/components/Crossroad'
 import Choice from '@/components/Choice'
+import End from '@/components/End'
 
 Vue.use(Router)
 
@@ -25,6 +26,11 @@ export default new Router({
         {path: 'crossroad/:routeEpisodeId', name: 'crossroad', component: Crossroad},
         {path: 'choice/:routeEpisodeId', name: 'choice', component: Choice}
       ]
+    },
+    {
+      path: '/end',
+      name: 'end',
+      component: End
     }
   ]
 })

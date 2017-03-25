@@ -1,2 +1,3 @@
 export const NEXT_EPISODE = 'NEXT_EPISODE'
 export const SETUP_EPISODE = 'SETUP_EPISODE'
+export const UPDATE_MIN_HEIGHT = 'UPDATE_MIN_HEIGHT'

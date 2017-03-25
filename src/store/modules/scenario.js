@@ -12,7 +12,13 @@ const getters = {
   currentTitle: (state, getters) => getters.currentEpisode.title,
   currentSequence: (state, getters) => getters.currentEpisode.video_file,
   currentBSContent: (state, getters) => getters.currentEpisode.blackscreen_content,
-  nextEpisode: (state, getters) => episodes[getters.currentEpisode.next_episode_id],
+  nextEpisode: (state, getters) => {
+    if (Array.isArray(getters.currentEpisode.next_episode_id)) {
+      return getters.currentEpisode.next_episode_id.map(id => episodes[id])
+    } else {
+      return episodes[getters.currentEpisode.next_episode_id]
+    }
+  },
   globalProgress: (state, getters) => ({value: state.episodeId - 1, max: getters.episodesCount - 1})
 }
 

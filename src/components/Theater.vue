@@ -47,12 +47,19 @@ export default {
     ...mapGetters({
       progress: 'globalProgress',
       nextEpisode: 'nextEpisode',
-      // nextEpisodeType: 'nextEpisodeType',
+      minHeightPlayer: 'minHeightPlayer',
       title: 'currentTitle'
-    }),
+    })
+  },
 
-    minHeightPlayer () {
-      return `${this.aspectRatio}px`
+
+  watch: {
+    routeEpisodeId (id) {
+      if (id === 'end') {
+        console.log('THIS IS THE END')
+      } else {
+        this.setupEpisode(id)
+      }
     }
   },
 
@@ -63,7 +70,7 @@ export default {
   },
 
   mounted () {
-    this.aspectRatio = document.documentElement.clientWidth * 9 / 16
+    this.updateMinHeight(document.documentElement.clientWidth * 9 / 16)
   },
 
   beforeDestroy () {
@@ -73,8 +80,8 @@ export default {
 
   methods: {
     ...mapMutations({
-      setupEpisode: types.SETUP_EPISODE
-      // nextEpisode: types.NEXT_EPISODE
+      setupEpisode: types.SETUP_EPISODE,
+      updateMinHeight: types.UPDATE_MIN_HEIGHT
     }),
 
 
@@ -94,7 +101,6 @@ export default {
         name: this.nextEpisode.type,
         params: {routeEpisodeId: `${this.nextEpisode.episodeId}`}}
       )
-      this.setupEpisode(this.nextEpisode.episodeId)
     }
   }
 }
