@@ -4,9 +4,13 @@
     "type": "sequence",
     "video_file": "sequence",
     "subtitle": "monter-au-cerro-rico.srt",
-    "transparents": [],
-    "inserts": [],
-    "graphics": [],
+    "annotations": [
+      {
+        "key": "annotation1",
+        "position": {"bottom": true, "right": true},
+        "start": 1
+      }
+    ],
     "title": "monter-au-cerro-rico",
     "blackscreen_content": "lorem ipsum dolor simet 1",
     "next_episode_id": 2

@@ -7,6 +7,7 @@
 <script>
 import bus from '@/bus'
 import { FADE_BLACKSCREEN } from '@/bus/bus-events'
+import { BLACKSCREEN_LENGTH_DURATION } from '@/config'
 export default {
   name: 'BlackScreen',
 
@@ -20,7 +21,7 @@ export default {
 
   computed: {
     lifeTime () {
-      return this.content.split(' ').length * 100
+      return this.content.split(' ').length * BLACKSCREEN_LENGTH_DURATION
     }
   },
 

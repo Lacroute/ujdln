@@ -10,18 +10,20 @@
       <button v-if="isPaused" @click="playPause" type="button" name="play">PLAY</button>
       <button v-else @click="playPause" type="button" name="pause">PAUSE</button>
     </div>
+    <annotation v-for="a in currentEpisode.annotations" :params="a" :progressEvent="progress" :key="a.key"></annotation>
   </div>
 </template>
 
 <script>
 import ProgressBar from './ProgressBar'
+import Annotation from './Annotation'
 import bus from '@/bus'
 import { VIDEO_ENDED, START_VIDEO, VIDEO_CAN_PLAY_THROUGH } from '@/bus/bus-events'
-
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Player',
-  components: {ProgressBar},
+  components: {ProgressBar, Annotation},
 
   props: {
     sequence: String
@@ -40,6 +42,9 @@ export default {
 
 
   computed: {
+    ...mapGetters([
+      'currentEpisode'
+    ]),
     // Helpers to build video filenames.
     mp4 () { return `${this.sequence}.mp4` },
     webm () { return `${this.sequence}.webm` }
@@ -121,7 +126,9 @@ export default {
         console.log('loadedmetadata')
         this.progress.max = v.duration
       })
-      v.addEventListener('timeupdate', _ => { this.progress.value = v.currentTime })
+      v.addEventListener('timeupdate', _ => {
+        this.progress.value = v.currentTime
+      })
     },
 
     // Fired when the video end.

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>Un jour dans la nuit</h1>
-    <router-link :to="{ name: 'story'}">Commencer</router-link>
+    <router-link :to="{ name: 'sequence'}">Commencer</router-link>
   </div>
 </template>
 
