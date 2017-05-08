@@ -1,14 +1,16 @@
 <template>
   <div class="player">
-    <video ref="video" controls @click="playPause">
+    <video ref="video" controls @click="playPauseVideo" :style="{maxHeight: minHeightPlayer}">
       <source ref="sourceMp4" :src="requireVideo(mp4)" type="video/mp4"/>
       <source ref="sourceWebm" :src="requireVideo(webm)" type="video/webm"/>
       <p v-html="noSupport"></p>
     </video>
     <progress-bar :progressEvent="progress"></progress-bar>
     <div class="controls">
-      <button v-if="isPaused" @click="playPause" type="button" name="play">PLAY</button>
-      <button v-else @click="playPause" type="button" name="pause">PAUSE</button>
+      <button @click="playPauseVideo" type="button" name="play">
+        <span v-if="videoIsPaused">PLAY</span>
+        <span v-else>PAUSE</span>
+      </button>
     </div>
     <annotation v-for="a in currentEpisode.annotations" :params="a" :progressEvent="progress" :key="a.key"></annotation>
   </div>
@@ -19,7 +21,8 @@ import ProgressBar from './ProgressBar'
 import Annotation from './Annotation'
 import bus from '@/bus'
 import { VIDEO_ENDED, START_VIDEO, VIDEO_CAN_PLAY_THROUGH } from '@/bus/bus-events'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
+import { PLAY_PAUSE_VIDEO } from '@/store/mutation-types'
 
 export default {
   name: 'Player',
@@ -32,7 +35,6 @@ export default {
   data () {
     return {
       noSupport: 'Votre navigateur ne prend pas en charge la balise video.',
-      isPaused: true,
       progress: {
         max: 1,
         value: 0
@@ -43,7 +45,9 @@ export default {
 
   computed: {
     ...mapGetters([
-      'currentEpisode'
+      'currentEpisode',
+      'minHeightPlayer',
+      'videoIsPaused'
     ]),
     // Helpers to build video filenames.
     mp4 () { return `${this.sequence}.mp4` },
@@ -55,6 +59,10 @@ export default {
     sequence (newVideoFile) {
       console.log('watch', newVideoFile)
       this.$refs.video.load()
+    },
+
+    videoIsPaused () {
+      this.playPause()
     }
   },
 
@@ -86,17 +94,22 @@ export default {
 
 
   methods: {
+    ...mapMutations({
+      playPauseVideo: PLAY_PAUSE_VIDEO
+    }),
+
+
     // Require the video file on the fly.
     requireVideo (file) { return require(`@/assets/video/${file}`) },
 
 
     setupListener () {
-      bus.$on(START_VIDEO, this.playPause)
+      bus.$on(START_VIDEO, this.playPauseVideo)
     },
 
 
     removeListener () {
-      bus.$off(START_VIDEO, this.playPause)
+      bus.$off(START_VIDEO, this.playPauseVideo)
     },
 
 
@@ -116,7 +129,6 @@ export default {
       let v = this.$refs.video
       if (v.paused || v.ended) v.play()
       else v.pause()
-      this.isPaused = v.paused
     },
 
     // Dispatch the currentTime of the video to the progress component.
@@ -134,7 +146,7 @@ export default {
     // Fired when the video end.
     onEnd () {
       console.log('VIDEO_ENDED')
-      this.isPaused = true
+      this.playPauseVideo()
       bus.$emit(VIDEO_ENDED)
     }
   }
@@ -148,6 +160,7 @@ export default {
 video{
   max-width: 100%;
   display: block;
+  margin: auto;
 }
 
 /* CONTROLS*/

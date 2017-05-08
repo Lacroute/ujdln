@@ -1,15 +1,16 @@
 <template>
   <div class="theater">
-    <header>
-      <global-progress></global-progress>
-      <h1>{{ $t(title) }}</h1>
-    </header>
-
-    <section class="scene" :style="{minHeight: minHeightPlayer}">
+    <section class="scene" :style="{maxHeight: minHeightPlayer}">
       <router-view :key="routeEpisodeId"></router-view>
-      <!-- <black-screen v-if="showBS || !playerIsReady" :content="bSContent"></black-screen>
-      <player :sequence="sequence"></player> -->
     </section>
+
+    <div class="overlay">
+      <div class="wrapper-overlay">
+        <h1>{{ $t(title) }}</h1>
+        <global-progress></global-progress>
+        <scene-controls></scene-controls>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -17,6 +18,7 @@
 import GlobalProgress from '@/components/GlobalProgress'
 import Player from '@/components/videoPlayer/Player'
 import BlackScreen from '@/components/videoPlayer/BlackScreen'
+import SceneControls from '@/components/SceneControls'
 
 import bus from '@/bus'
 import { SEQUENCE_ENDED } from '@/bus/bus-events'
@@ -25,7 +27,7 @@ import * as types from '@/store/mutation-types'
 
 export default {
   name: 'Theater',
-  components: {GlobalProgress, Player, BlackScreen},
+  components: {GlobalProgress, Player, BlackScreen, SceneControls},
 
   props: {
     routeEpisodeId: {
@@ -66,7 +68,11 @@ export default {
   },
 
   mounted () {
-    this.updateMinHeight(document.documentElement.clientWidth * 9 / 16)
+    let w = window
+    let d = document
+    let e = d.documentElement
+    let g = d.getElementsByTagName('body')[0]
+    this.updateMinHeight(w.innerHeight || e.clientHeight || g.clientHeight)
   },
 
   beforeDestroy () {
@@ -103,8 +109,27 @@ export default {
 </script>
 
 <style lang="scss">
+
+.theater{
+  position: relative;
+}
 .scene {
   position: relative;
-
+}
+.overlay{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.wrapper-overlay{
+  background: gold;
+  height: 3em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  h1 {
+    font-size: 1.5em;
+  }
 }
 </style>

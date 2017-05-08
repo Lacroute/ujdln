@@ -20,7 +20,8 @@ export default {
   data () {
     return {
       playerIsReady: false,
-      showBS: true
+      showBS: true,
+      autoPlay: false
     }
   },
 
@@ -59,7 +60,7 @@ export default {
       console.log(VIDEO_CAN_PLAY_THROUGH)
       if (!this.playerIsReady) {
         this.playerIsReady = true
-        if (!this.showBS) bus.$emit(START_VIDEO)
+        if (!this.showBS && this.autoPlay) bus.$emit(START_VIDEO)
       }
     },
 
@@ -72,7 +73,7 @@ export default {
 
     fadeOutBlackScreen () {
       this.showBS = false
-      if (this.playerIsReady) bus.$emit(START_VIDEO)
+      if (this.playerIsReady && this.autoPlay) bus.$emit(START_VIDEO)
     },
 
     nextSequence () {
